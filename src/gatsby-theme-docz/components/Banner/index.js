@@ -5,7 +5,7 @@ export const Banner = () => {
   const [colorMode, setColorMode] = useColorMode()
   return (
     <img
-      src={colorMode === 'light' ? 'public/visioncortex-banner.svg' : 'public/visioncortex-banner-light.svg'}
+      src={colorMode === 'light' ? 'public/visioncortex-logo-square.svg' : 'public/visioncortex-logo-square-light.svg'}
     />
   )
 }
