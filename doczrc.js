@@ -1,3 +1,6 @@
 export default {
-    dest: '/docs'
+    dest: '/docs',
+    ignore: [
+        'README.md'
+    ]
 }
