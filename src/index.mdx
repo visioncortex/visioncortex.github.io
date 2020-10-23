@@ -3,8 +3,24 @@ name: Vision Cortex
 route: /
 ---
 
-# Introduction
+# Vision Cortex - Semantic Computer Vision
 
-## Getting Started
+The goal of Semantic Computer Vision is to allow computers to understand the content of graphics designed by humans, and construct a high level representation of such information.
 
-Hello world
+This technology can be embodied in different applications:
+
+## Raster to Vector graphics conversion
+
+We developed [VTracer](//www.visioncortex.org/vtracer/), a program to convert raster images (like jpg & png) into vector graphics (svg). Our graphics pipeline is able to process complex graphics as well as photographs and trace the curves optimally to output highly compressed vector files.
+
+## Optical Character Recognition
+
+We are developing a new Optical Character Recognition (OCR) engine from the ground up specifically for pictorial languages like Chinese, Korean and Japanese. There are still several aspects we would like to push forward:
+
+1. Improve recognition accuracy on pictorial languages like Chinese, Korean and Japanese
+
+2. Extract and recognize text from complex graphics
+
+3. Extract contextual information like paragraphing and font style
+
+The output of our engine is an abstract representation with semantic information, which composes of a hierarchy of text, from groups, paragraphs, sentences to characters. In addition, stylistic information like font weight, size and color will be carried.

@@ -1,13 +1,13 @@
-# Vision Cortext
+# Vision Cortex - Semantic Computer Vision
 
-This is the very beginning of Version Cortex Document.
+The official website of Vision Cortex
 
-## Dev
+### Dev
 `npm run dev` will start a local development server at http://localhost:3000/.
 
-## Build 
+### Build
 `npm run build` will generated static site in .docz/dist/.  
 `npm run serve` will serve the built files.
 
-## Credit
+### Credit
 Powered by docz
