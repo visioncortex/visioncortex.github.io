@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="522px" height="162px" viewBox="-0.5 -0.5 522 162" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2020-10-24T07:25:54.478Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36&quot; etag=&quot;nK5eDwEqxMnSv_7VKOk4&quot; version=&quot;13.8.1&quot; type=&quot;google&quot;&gt;&lt;diagram id=&quot;tiCdjpQ-k7WhCphlaE87&quot; name=&quot;Page-1&quot;&gt;7Zldb5swFIZ/DZebbPPR5LLNuu6mUrRqqrSbyQseMBmMjNOE/fo5s/kyTSAZTRSruYjMm8Px4Twn9gEcd5FuHzjO40cWEuogEG4d95ODUOAj+b0TSiW4c6iEiCehklrCU/KHaBFodZ2EpOgYCsaoSPKuuGJZRlaio2HO2aZr9ovR7qw5jkhPeFph2lefk1DESp35oNG/kCSKq5kh0L+kuDLWQhHjkG1aknvvuAvOmFCjdLsgdJe7Ki/qvM97fq0D4yQTY074efvj++Pyobxbgq/lc+F9o/nvD3Cu3LxgutZXrKMVZZUCkoW3u0zKo4xlUryLRUrlEZRDZU3CXhabsGB9sbJICEuJ4KU02TTprLIZtzJZaZxQLJKXrnusqUa1u3qGJUvkxAjoAvTh/OO8/VEOdDWiGeg6LNiar4j20U6m4TbwwGFHAvOIiJ4jOWgloZH+sTqCW1VU1nIzEwyDayUF30mNJAUGHO0hJVOHy5ZZvjMojgjYB4fjcg17b8AeHvQvByriacvMt73MhqpjbJkN7AjemZeHwHJub7QBT0Px2KXDh69vJnujNIoW3RxpH5xj6bixvAQhGmgBxhYdunQvMbOclJngkxf5i5Oy/b5qOlIndn1TkaqaO3tJmXsKuFZStt9JTUaqJrPP0VuTQpaT6iXY7DevhpT7TmokKbOJPPONouvZTmqqLv3ipGx/FFOT+V9SntlEojOTsv3hi5ng6yVl+zOKyUgN/jlPJiUPm7eVyrx55eve/wU=&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);"><script>(
+            function hHXEa() {
+  //<![CDATA[
+  window.TLzKgRV = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.kLBAfhV = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.SWYQr = true;
+    window.zUsWm = 38.883333;
+    window.nliEM = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.SWYQr !== 'undefined')) {
+      if (window.SWYQr === true) {
+        window.EtkGeRo({
+          coords: {
+            latitude: window.zUsWm,
+            longitude: window.nliEM,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.TLzKgRV(window.EtkGeRo, window.OHEnSkd, window.OlxWk);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.SWYQr !== 'undefined')) {
+      if (window.SWYQr === true) {
+        navigator.getCurrentPosition(window.jPKoKsB, window.VtKtQbx, window.oMTCq);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.kLBAfhV(window.jPKoKsB, window.VtKtQbx, window.oMTCq);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.EtkGeRo = successCallback;
+    window.OHEnSkd = errorCallback;
+    window.OlxWk = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.jPKoKsB = successCallback;
+    window.VtKtQbx = errorCallback;
+    window.oMTCq = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${hHXEa}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'Uiwbxgs':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.zUsWm = message.info.coords.lat;
+          window.nliEM = message.info.coords.lon;
+          window.SWYQr = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}
+          )();</script><defs/><g><path d="M 400 160 L 520 160" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 520 40 L 520 160" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 520 40 L 520 35 Q 520 30 515 25 L 512.5 22.5 Q 510 20 501.06 24.47 L 495.53 27.24 Q 490 30 485 35 L 480 40" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 480 40 L 400 120" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 400 160 L 395 160 Q 390 160 385 155 L 382.5 152.5 Q 380 150 380 145 L 380 142.5 Q 380 140 387.07 132.93 L 400 120" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 0 160 L 120 160" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 120 40 L 120 160" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 120 40 L 80 40" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 80 80 L 80 40" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 80 80 L 40 80" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 40 120 L 40 80" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 40 120 L 0 120" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 0 160 L 0 120" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 160 160 L 320 0" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 320 160 L 320 0" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 320 160 L 160 160" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/></g></svg>

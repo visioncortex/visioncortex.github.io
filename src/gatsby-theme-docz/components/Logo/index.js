@@ -12,7 +12,7 @@ export const Logo = () => {
       <Link style={{ height: '48px' }} to="/" sx={styles.link}>
         <img
           style={{ height: '100%' }}
-          src={colorMode === 'light' ? 'public/visioncortex-logo.svg' : 'public/visioncortex-logo-light.svg'}
+          src={colorMode === 'light' ? '/public/visioncortex-logo.svg' : '/public/visioncortex-logo-light.svg'}
         />
       </Link>
     </Flex>

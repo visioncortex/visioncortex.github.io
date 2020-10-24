@@ -1,11 +1,11 @@
 ---
-name: Vision Cortex
+name: .Vision Cortex
 route: /
 ---
 
-import { Banner } from './gatsby-theme-docz/components/Banner'
+import { SquareLogo } from './components/SquareLogo'
 
-<Banner/>
+<SquareLogo/>
 
 # Vision Cortex - Semantic Computer Vision
 
@@ -15,11 +15,13 @@ This technology can be embodied in different applications:
 
 ## Raster to Vector graphics conversion
 
+<img style={{height: 240 + 'px'}} src={'public/images/vtracer-demo.svg'}/>
+
 We developed [VTracer](//www.visioncortex.org/vtracer/), a program to convert raster images (like jpg & png) into vector graphics (svg). Our graphics pipeline is able to process complex graphics as well as photographs and trace the curves to output compact vector files. The tracer features high fidelity, low redundancy and high performance.
 
 ## Optical Character Recognition
 
-<img src={'public/images/forest-layering.svg'}/>
+<img style={{height: 240 + 'px'}} src={'public/images/forest-layering.svg'}/>
 
 We are developing a new Optical Character Recognition (OCR) engine from the ground up specifically for pictorial languages like Chinese, Korean and Japanese (CKJ). There are several aspects we would like to push the state of the art forward:
 

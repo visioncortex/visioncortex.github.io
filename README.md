@@ -10,4 +10,4 @@ The official website of Vision Cortex
 `npm run serve` will serve the built files.
 
 ### Credit
-Powered by docz
+Powered by [docz](//www.docz.site/)
