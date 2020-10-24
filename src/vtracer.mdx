@@ -4,6 +4,7 @@ route: /vtracer
 ---
 
 import { Figure } from './vtracer-components/Figure'
+import { InlineImage } from './vtracer-components/InlineImage'
 
 # VTracer
 
@@ -53,7 +54,7 @@ The path can be further simplified by evaluating the <i>penalty</i> from replaci
 
 Given a subpath, we would like to determine if a line drawn from the first point to the last can approximate the whole subpath with high fidelity. The idea is to make sure that all points in the subpath are close enough to the approximating line. To avoid all the complicated coordinate geometry, we can simply evaluate the areas of triangles formed by the first point, the last point, and each in-between point.
 
-Let ΔABC be one such triangle, with A and C being the first and last points of the subpath respectively, and B being any in-between point. Let h and b be the height and the base (length of AC) respectively. VTracer models the penalty of ΔABC as <img style={{verticalAlign: 'middle'}} src={'public/vtracer/PenaltyEquation.svg'} />, as the area of ΔABC and b can be obtained by simple geometry. It is crucial for the penalty to be directly proportional to h and b.
+Let ΔABC be one such triangle, with A and C being the first and last points of the subpath respectively, and B being any in-between point. Let h and b be the height and the base (length of AC) respectively. VTracer models the penalty of ΔABC as <InlineImage src={'public/vtracer/PenaltyEquation.svg'} invSrc={'public/vtracer/PenaltyEquation_inv.svg'} />, as the area of ΔABC and b can be obtained by simple geometry. It is crucial for the penalty to be directly proportional to h and b.
 
 Once the penalty is clearly defined, the procedure of simplification is straightforward. VTracer greedily extends a subpath until the maximum penalty along it exceeds a specific tolerance, then all edges in the subpath are replaced by one line from the first to the second last point (or equivalently, remove in-between points from the path). After the replacement, the same process is performed starting from the next point in the path. When the last subpath is extended to the last point in the whole path, the simplification stage concludes.
 

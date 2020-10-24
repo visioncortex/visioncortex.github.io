@@ -2,8 +2,8 @@
 import { jsx } from 'theme-ui'
 
 export const Figure = (props) => {
-  let imgSrc = props.src;
-  let descText = (props.text)? props.text : '';
+  const imgSrc = props.src;
+  const descText = (props.text)? props.text : '';
   return (
 	<div>
 		<img
