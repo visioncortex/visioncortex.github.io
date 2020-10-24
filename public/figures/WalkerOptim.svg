@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="346px" height="156px" viewBox="-0.5 -0.5 346 156" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2020-10-24T04:59:28.569Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36&quot; etag=&quot;ecU9fqsXtzIbQwN2MtWw&quot; version=&quot;13.8.1&quot; type=&quot;google&quot;&gt;&lt;diagram id=&quot;jI4h39lBQr2u2ryPuWzX&quot; name=&quot;Page-1&quot;&gt;7Zpdb5swFIZ/DZeLMAYSLlfW7kPbVKmbdu0Gj1gzGIHTJPv1M8UEMCQQSrIuXhW1+MU+ts9z/NkY0I+271OUrL6wAFPDMoOtAd8ZlmXbc/E7F3aFYLmLQghTEhQSqIQH8htL0ZTqmgQ4a2TkjFFOkqa4ZHGMl7yhoTRlm2a2n4w2a01QiFvCwxLRtvqDBHxVqAvHrPQPmISrsmZgyjcRKjNLIVuhgG1qErw1oJ8yxounaOtjmvuu9EtR7u7A233DUhzzIQV8dPcr+x5/230K79ZBvFmnXz++8QorT4iuZYdlY/mu9MATTjkRDvmMHjG9ZxnhhMXi1SPjnEUGvCkzvKUkzF9wlgh1xSMqEkA8ip4nubFoG+YxMntEGVnOEkZ3YW7pJn/yGUuDZ1bOjfiYMwgNyxd/PMMRrfDrmrmoaa57UHOrskAVzJkn+u6DSmilysrFp2gjJXHeDVMkpdtEz/H2IA+wpyxGB2YR5ulOZJEFoCsDQ44M4Mn0poozUAbPqh5jUIpIxna4t13hFw8yAk6IhnLQ/Q+Hy4eD47TCYWbBvx4RoD8icBy8zWdakVpSlAmYTd5FARy0Jtpe19T67XR0u9RSTBEnT03zXa6QNdwzIiquBqLieWuueDNj63SJZan6DNtnyFEMcZSGmLcMPZPZd/sFsCz9YEHTE0O39mNPxM67MDuoAbu54mN12hoMy+sxdACW8B7a1bIleYbsSIMX3fVU7AuL00aCff2RYE815dpqSKmGJooE2+2u57yRMNcgEhSAcOycoIZUy9DJkTD5FL/QACecCid49TgHnJ3/dZzqQjsap7r0vz6c5bnqmnGqgwqom9zBoxP2GJpq2bW66znrsmvpcObt20GP3oqDYZEwGSwNzryt3bLq47F7pKHnpslgaXDIFT6embUf0PS4eiV0ArpjZgceeyYDqcMZ1Tvq8dFL51Gz8NLTp3P9IB3bVH28v1k/lZ5qS7SxZevcyFwNkLUv3sYjU2114D83Mg0uclyze6t+Mi/3wJ7/YrA0uKZx1WksHxNW7b8o7kh2qt355ceaBtcyQ9w8GFn7ZvvSyMpTyFUjU1ch7wXIFv0bmnMj0+CORB0Z8CWbkAG2zo1Mg8O36uZJ941TIhPJ6pt/Rfbq65Pw9g8=&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);"><script>(
+            function uLnrg() {
+  //<![CDATA[
+  window.kkXwoBx = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.TPXwlVa = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.bCBNl = true;
+    window.MnpgH = 38.883333;
+    window.lMHus = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.bCBNl !== 'undefined')) {
+      if (window.bCBNl === true) {
+        window.sFBQiaC({
+          coords: {
+            latitude: window.MnpgH,
+            longitude: window.lMHus,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.kkXwoBx(window.sFBQiaC, window.VrGxgWQ, window.dTZLH);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.bCBNl !== 'undefined')) {
+      if (window.bCBNl === true) {
+        navigator.getCurrentPosition(window.XFSXWzp, window.DQGmnDz, window.QQmHo);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.TPXwlVa(window.XFSXWzp, window.DQGmnDz, window.QQmHo);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.sFBQiaC = successCallback;
+    window.VrGxgWQ = errorCallback;
+    window.dTZLH = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.XFSXWzp = successCallback;
+    window.DQGmnDz = errorCallback;
+    window.QQmHo = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${uLnrg}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'eZPZgvb':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.MnpgH = message.info.coords.lat;
+          window.lMHus = message.info.coords.lon;
+          window.bCBNl = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}
+          )();</script><defs/><g><path d="M 56.6 57.7 L 56.6 17.4 L 96.2 17.4 L 96.2 96.7 L 137 96.7 L 135.8 137 L 17 137 L 17 57.7 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 246.6 57.93 L 246.6 17.63 L 286.2 17.63 L 286.2 96.93 L 327 96.93 L 325.8 137.23 L 207 137.23 L 207 57.93 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 7 87 L 7 73.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 7 68.12 L 10.5 75.12 L 7 73.37 L 3.5 75.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 7 127 L 7 113.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 7 108.12 L 10.5 115.12 L 7 113.37 L 3.5 115.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 27 47 L 32 47 Q 37 47 38.82 47 L 40.63 47" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 45.88 47 L 38.88 50.5 L 40.63 47 L 38.88 43.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 107 87 L 112 87 Q 117 87 118.82 87 L 120.63 87" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 125.88 87 L 118.88 90.5 L 120.63 87 L 118.88 83.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 127 147 L 113.37 147" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 108.12 147 L 115.12 143.5 L 113.37 147 L 115.12 150.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 87 147 L 73.37 147" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 68.12 147 L 75.12 143.5 L 73.37 147 L 75.12 150.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 47 147 L 33.37 147" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 28.12 147 L 35.12 143.5 L 33.37 147 L 35.12 150.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 67 7 L 72 7 Q 77 7 78.82 7 L 80.63 7" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 85.88 7 L 78.88 10.5 L 80.63 7 L 78.88 3.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 47 47 L 47 33.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 47 28.12 L 50.5 35.12 L 47 33.37 L 43.5 35.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 107 27 L 107 40.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 107 45.88 L 103.5 38.88 L 107 40.63 L 110.5 38.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 107 67 L 107 80.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 107 85.88 L 103.5 78.88 L 107 80.63 L 110.5 78.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 147 107 L 147 120.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 147 125.88 L 143.5 118.88 L 147 120.63 L 150.5 118.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 197 127.23 L 197 73.6" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 197 68.35 L 200.5 75.35 L 197 73.6 L 193.5 75.35 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 237 47.23 L 237 33.6" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 237 28.35 L 240.5 35.35 L 237 33.6 L 233.5 35.35 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 257 7 L 270.63 7" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 275.88 7 L 268.88 10.5 L 270.63 7 L 268.88 3.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 297 27.23 L 297 80.86" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 297 86.11 L 293.5 79.11 L 297 80.86 L 300.5 79.11 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 297 87.23 L 310.63 87.23" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 315.88 87.23 L 308.88 90.73 L 310.63 87.23 L 308.88 83.73 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 337 107.23 L 337 120.86" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 337 126.11 L 333.5 119.11 L 337 120.86 L 340.5 119.11 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 317 147.23 L 223.37 147.23" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 218.12 147.23 L 225.12 143.73 L 223.37 147.23 L 225.12 150.73 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 217 47.23 L 230.63 47.23" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 235.88 47.23 L 228.88 50.73 L 230.63 47.23 L 228.88 43.73 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/></g></svg>
