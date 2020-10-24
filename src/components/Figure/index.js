@@ -8,7 +8,7 @@ export const Figure = (props) => {
   <div>
     <img
       alt=''
-      style={{display: 'block', marginLeft: 'auto', marginRight: 'auto'}}
+      style={{display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: 100 + '%'}}
       src={'/public/' + imgSrc}
     />
     <h6 style={{textAlign: 'center'}}>
