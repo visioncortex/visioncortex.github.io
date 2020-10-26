@@ -5,5 +5,9 @@ export default {
     dest: '/docs',
     ignore: [
         'README.md'
+    ],
+    menu: [
+        'Vision Cortex',
+        'VTracer',
     ]
 }
