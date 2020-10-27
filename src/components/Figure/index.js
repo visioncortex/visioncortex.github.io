@@ -7,7 +7,7 @@ export const Figure = (props) => {
   return (
   <div>
     <img
-      alt=''
+      alt={descText}
       style={{display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: 100 + '%'}}
       src={'/public/' + imgSrc}
     />
