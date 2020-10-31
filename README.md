@@ -1,8 +1,13 @@
-![logo](public/visioncortex-banner.png)
+<div align="center">
 
-# Vision Cortex - Semantic Computer Vision
+  <img src="public/visioncortex-banner.png">
+  <h1>Vision Cortex - Semantic Computer Vision</h1>
 
-The official website of Vision Cortex
+  <p>
+    <strong>The official website of Vision Cortex</strong>
+  </p>
+
+</div>
 
 ### Dev
 `npm run dev` will start a local development server at http://localhost:3000/.
