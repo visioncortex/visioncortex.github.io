@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="public/visioncortex-banner.png">
+  <img src="public/visioncortex-banner.png"/>
   <h1>Vision Cortex - Semantic Computer Vision</h1>
 
   <p>
