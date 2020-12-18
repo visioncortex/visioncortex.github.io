@@ -8,6 +8,7 @@ export default {
     ],
     menu: [
         'Vision Cortex',
+        'Vision Magic',
         'VTracer',
     ]
 }

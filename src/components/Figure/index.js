@@ -16,9 +16,9 @@ export const Figure = (props) => {
       }}
       src={'/public/' + imgSrc}
     />
-    <h6 style={{textAlign: 'center'}}>
+    <h4 style={{textAlign: 'center'}}>
       {descText}
-    </h6>
+    </h4>
   </div>
   )
 }
