@@ -9,19 +9,25 @@ import { SquareLogo } from './components/SquareLogo'
 
 # Vision Cortex - Semantic Computer Vision
 
-The goal of Semantic Computer Vision is to allow computers to understand the content of graphics designed by humans, and construct a high level representation of such information.
+The goal of Semantic Computer Vision is to allow computers to understand the content of images and graphics as intended and perceived by humans, and construct a high level representation of such information.
 
 This technology can be embodied in different applications:
 
-## Raster to Vector graphics conversion
+## Image simplification and segmentation
 
-<img style={{height: 240 + 'px'}} src={'public/images/vtracer-demo.svg'}/>
+<img style={{width: 100 + '%'}} src={'public/images/visionmagic-preview.png'}/>
 
-We developed [VTracer](//www.visioncortex.org/vtracer/), a program to convert raster images (like jpg & png) into vector graphics (svg). Our graphics pipeline is able to process complex graphics as well as photographs and trace the curves to output compact vector files. The tracer features high fidelity, low redundancy and high performance.
+We developed [Impression](/visionmagic-docs), a family of algorithms for image simplification, segmentation and vectorization. It allows us to control the amount of visual information in an image in a quantitative manner.
+
+## Image Vectorization
+
+<img style={{width: 100 + '%'}} src={'public/images/vtracer-demo.svg'}/>
+
+We developed [VTracer](//www.visioncortex.org/vtracer/), a utility to convert raster images (like jpg & png) into vector graphics (svg). Our graphics pipeline is able to process high resolution scans and photographs and trace the content to output compact vector files.
 
 ## Optical Character Recognition
 
-<img style={{height: 240 + 'px'}} src={'public/images/forest-layering.svg'}/>
+<img style={{width: 100 + '%'}} src={'public/images/forest-layering.svg'}/>
 
 We are developing a new Optical Character Recognition (OCR) engine from the ground up specifically for pictorial languages like Chinese, Korean and Japanese (CKJ). There are several aspects we would like to push the state of the art forward:
 
@@ -33,8 +39,6 @@ We are developing a new Optical Character Recognition (OCR) engine from the grou
 
 4. Deliver contextual information like paragraphing and font style
 
-The output of our engine is an abstract representation with semantic information, which composes of a hierarchy of text, from paragraphs, sentences to characters. In addition, stylistic information like font weight, size and color will be delivered.
-
 ## About Us
 
 The research group is led by alumnus [Chris Tsang](//github.com/tyt2y3) conjoining with several students and alumni from [Hong Kong University of Science and Technology](//www.ust.hk): [Billy Chan](//github.com/billy1624), [Hill Tse
@@ -42,4 +46,4 @@ The research group is led by alumnus [Chris Tsang](//github.com/tyt2y3) conjoini
 
 We are actively looking for researchers and developers to engage in this R & D project. If you are interested in doing a FYP or thesis related to this topic, let's get [in touch](mailto:info@thf.technology) immediately.
 
-We promise to release the outcome of this project as open source software under a permissive license and continue to develop and maintain it over the years to come.
+We promise to release the eventual outcome of this project as open source software under a permissive license and continue to develop and maintain it over the years to come.
