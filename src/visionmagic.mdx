@@ -7,13 +7,13 @@ import { Figure } from './components/Figure'
 
 # Vision Magic
 
-Author: [Chris Tsang](//github.com/tyt2y3)
+Author: [Chris Tsang](//github.com/tyt2y3) | Published: 2020-12-24
 
 -----
 
 [VisionMagic Impression](//www.visioncortex.org/visionmagic/) is a family of algorithms for image simplification, segmentation and vectorization.
 
-<div style="padding:78.37% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/491698600" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<iframe src="https://player.vimeo.com/video/491698600" style="width: 100%; height: 95vh; max-height: 75vw;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
 ## Premise
 
@@ -53,7 +53,7 @@ In image simplification, there are multiple dimensions of information which can 
 
 ### Shape Simplification
 
-Vision Magic currently chose the Ramer-Douglas-Peucker algorithm for shape simplification. While the original algorithm is designed for open curves, Vision Magic adapted it for closed shapes. We cut a closed path into 4 sections, simplify each, and stitch them back together after path simplification. We choose the north most, east most, south most and west most points to cut a given path. Effectively the simplest possible shape is a diamond with four points. However in practice, it is not desirable to have shapes with sharp corners, and so we would smooth them with a 4-point scheme as described in VTracer.
+Vision Magic currently chose the Ramer-Douglas-Peucker algorithm for shape simplification. While the original algorithm is designed for open curves, Vision Magic adapted it for closed shapes. We cut a closed path into 4 sections, simplify each, and stitch them back together after path simplification. We choose the north most, east most, south most and west most points to cut a given path. Effectively the simplest possible shape is a diamond with four points. However in practice, it is not desirable to have shapes with sharp corners, and so we would smooth them with a 4-point scheme as described in [VTracer](/vtracer-docs).
 
 <Figure src='visionmagic/simplification-shape-details.png' text="Left to right: gradual reduction of shape details"/>
 
@@ -67,13 +67,13 @@ It is important to note that this background color is not the mean pixel color o
 
 ### Color Levels
 
-More color levels mean finer gradient. Color levels set to 256 means utilizing the full color precision of RGB888. Setting color levels to 16 meaning a cluster has to have at least a color difference of 16 in order to be considered a separate cluster with the cluster on the upper level. In effect, tuning down the color levels would create a retro 8-bit color look. While the number of colors is limited, the color is still faithful to the original image.
+More color levels mean finer gradient. Color levels set to 256 means utilizing the full color precision of RGB888. Setting color levels to 32 meaning a cluster has to have at least a color difference of 8 in order to be considered a separate cluster with the cluster on the upper level. In effect, tuning down the color levels would create a retro 8-bit color look. While the number of colors in the palette is limited, the colors are still 24-bit and thus are faithful to the original image.
 
 <Figure src='visionmagic/simplification-color-levels.png' text="Left: less color levels; Right: more color levels"/>
 
 ## Segmentation
 
-Segmentation follows stage 3 of the algorithm. Similar clusters are grouped together by the disjoint sets algorithm, where each set of the result represents a solid color patch. For each cluster, its neighbours are being considered. If the color difference is smaller than a defined deviation, they will be put into the same union. To prevent grouping too greedily, after the first union, subsequent union would require stricter thresholds. To output segmentation result, each set would be rendered by the average color of all its constituting clusters.
+Segmentation follows stage 3 of the algorithm. Similar clusters are grouped together by the [disjoint sets](//docs.rs/visioncortex/latest/visioncortex/disjoint_sets) algorithm, where each set of the result represents a solid color patch. For each cluster, its neighbours are being considered. If the color difference is smaller than a defined deviation, they will be put into the same union. To prevent grouping too greedily, after the first union, subsequent union would require stricter thresholds. To output segmentation result, each set would be rendered by the average color of all its constituting clusters.
 
 After this stage, there would still be unwanted patches in the output. The output would further be re-clustered by Stage 1 to 3 described before, and an aggregation pass be applied afterwards. It would prune away smaller patches by merging into the closest (in terms of color) cluster if deviation would allow.
 
