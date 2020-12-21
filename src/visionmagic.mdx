@@ -27,13 +27,13 @@ Under this understanding, segmentation is an extreme degree of simplification, w
 
 ## The Clustering Algorithm
 
-The algorithm is hierarchical in nature and the idea is best described by the following verse:
+The [clustering algorithm](//docs.rs/visioncortex/latest/visioncortex/color_clusters) is hierarchical in nature and the idea is best described by the following verse:
 
 > On an unclaimed land, there are villages. Villages ally with each other to form tribes. Tribes conquer each other and form Kingdoms. Kingdoms clashes with each other and form empires. Empires breakdown and finally the entire earth becomes one union.
 
 ### Stage 1: clustering
 
-Clustering is a process to connect pixels of similar colors into clusters. Each cluster have a unique position and shape. There is well known algorithm to perform clustering and Vision Magic’s implementation is essentially same as [Kopelman Algorithm](//en.wikipedia.org/wiki/Hoshen%E2%80%93Kopelman_algorithm).
+Clustering is a process to connect pixels of similar colors into clusters. Each cluster have a unique position and shape. There is well known algorithm to perform clustering and Vision Magic’s implementation is essentially same as Kopelman Algorithm.
 
 ### Stage 2: hierarchical clustering
 
@@ -41,7 +41,7 @@ Hierarchical clustering is a process to build an image tree from the clusters of
 
 ### Stage 3: tree walking
 
-In image vectorization, we would walk the tree from top to bottom, trace each layer, and stack the vector paths on the output canvas. As if a painter paints on an empty canvas, he would lay down background first and then overlay objects atop, and finally add on details.
+In image vectorization as in [VTracer](/vtracer), we would walk the tree from top to bottom, trace each layer, and stack the vector paths on the output canvas. As if a painter paints on an empty canvas, he would lay down background first and then overlay objects atop, and finally add on details.
 
 ## Simplification
 
@@ -73,9 +73,9 @@ More color levels mean finer gradient. Color levels set to 256 means utilizing t
 
 ## Segmentation
 
-Segmentation follows stage 3 of the algorithm. Similar clusters are grouped together by the [disjoint sets](//docs.rs/visioncortex/latest/visioncortex/disjoint_sets) algorithm, where each set of the result represents a solid color patch. For each cluster, its neighbours are being considered. If the color difference is smaller than a defined deviation, they will be put into the same union. To prevent grouping too greedily, after the first union, subsequent union would require stricter thresholds. To output segmentation result, each set would be rendered by the average color of all its constituting clusters.
+[Segmentation](//docs.rs/visionmagic/latest/visionmagic/segmentation) follows stage 3 of the algorithm. Similar clusters are grouped together by the [disjoint sets](//docs.rs/visioncortex/latest/visioncortex/disjoint_sets) algorithm, where each set of the result represents a solid color patch. For each cluster, its neighbours are being considered. If the color difference is smaller than a defined deviation, they will be put into the same union. To prevent grouping too greedily, after the first union, subsequent union would require stricter thresholds. To output segmentation result, each set would be rendered by the average color of all its constituting clusters.
 
-After this stage, there would still be unwanted patches in the output. The output would further be re-clustered by Stage 1 to 3 described before, and an aggregation pass be applied afterwards. It would prune away smaller patches by merging into the closest (in terms of color) cluster if deviation would allow.
+After this stage, there would still be unwanted patches in the output. The output would further be re-clustered by Stage 1 to 3 described before, and an [aggregation](//docs.rs/visionmagic/latest/visionmagic/aggregation) pass be applied afterwards. It would prune away smaller patches by merging into the closest (in terms of color) cluster if deviation would allow.
 
 Finally, to output result, each aggregate would be rendered by its original cluster color.
 
