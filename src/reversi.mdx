@@ -1,0 +1,141 @@
+---
+name: Reversi Code
+route: /reversi-docs
+hidden: true
+---
+
+import { Figure } from './components/Figure'
+
+# The Reversi Code
+
+Author: [Chris Tsang](//github.com/tyt2y3) | Published: 2021-04-01
+
+-----
+
+All we know about the barcode that somehow resembles a Reversi game.
+
+<Figure text='The first Amazon Go store, Downtown Seattle' src='symcode/The_first_Amazon_Go_store,_Downtown_Seattle_(49005185111).jpg'/>
+
+> Photo by GoToVan via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_first_Amazon_Go_store,_Downtown_Seattle_(49005185111).jpg)
+
+Disclaimer: I have never been to an Amazon Go store myself. All samples are collected from the internet, and I merely compiled my observations as below. I never received any hints from anyone related to Amazon, so my design and analysis of the Reversi Code is 'clean room'.
+
+```
+057
+⚫🔷⚪⚫⚫⚫
+⚪⚪⚫⚫⚫⚫
+⚫⚪⚫⚫🔷⚫
+⚪🔷⚫⚪⚪⚫
+```
+
+```
+206
+⚫⚪⚫⚪⚫⚪
+⚫⚫⚪🔷⚪⚫
+⚫⚫⚪⚫⚪⚫
+🔷⚫⚪⚪⚫🔷
+```
+
+```
+268
+⚫⚫⚫⚫⚫⚫
+🔷🔷⚪⚫🔷⚫
+⚫⚪⚫⚪⚪⚫
+⚪⚫⚪⚪⚫⚫
+```
+
+```
+322
+⚫🔷⚪⚪⚫⚫
+⚪⚪⚫⚪⚫⚫
+⚫⚪🔷⚪⚫🔷
+⚪⚫⚫⚪⚫⚫
+```
+
+```
+508
+⚫⚪⚫⚪⚫⚪
+⚫⚫⚫⚫⚫⚫
+⚫⚫🔷🔷⚪⚪
+⚫🔷⚪⚪⚫⚫
+```
+
+```
+520
+⚫⚫⚫⚪⚫⚫
+⚪⚫⚫⚪⚪⚫
+⚫⚫⚫🔷⚫⚫
+⚪🔷⚪⚫⚪🔷
+```
+
+```
+628
+⚫⚫⚪⚫⚫⚫
+⚪⚪⚫⚫⚪⚫
+🔷⚪⚫⚪⚫🔷
+⚪⚫🔷⚫⚫⚫
+```
+
+```
+974
+🔷⚫⚫⚫🔷⚫
+⚪⚪⚪⚫⚫⚫
+⚫⚪⚫⚫⚪⚫
+⚪⚫⚪⚪⚪🔷
+```
+
+```
+906
+🔷⚫⚫⚪⚫⚫
+⚪⚫⚪⚪⚫⚫
+⚫⚫⚪⚪⚪⚫
+⚪🔷⚫⚫⚪🔷
+```
+
+```
+445
+🔷⚫⚪⚪⚫⚫
+⚫⚪⚪⚪⚫⚫
+⚫⚫⚪⚪⚫⚫
+⚪⚫🔷⚫⚪🔷
+```
+
+
+
+Observations:
+
+1. The matrix is 6x4.
+
+2. There are exactly three diamonds, which can be placed anywhere on the matrix.
+
+3. 15 to 17 of them are occupied by circles or diamonds, meaning there are 12 to 14 circles.
+
+4. If we number the modules from top left to bottom right, as in 
+
+   ```
+    0  1  2  3  4  5
+    6  7  8  9 10 11
+   12 13 14 15 16 17
+   18 19 20 21 22 23
+   ```
+
+   The 0th, 4th, 11th, 12th, 19th and 23rd module are always occupied. My guess is they act as a timing pattern.
+
+5. Either 5th or 18th module is occupied, but never both, my guess is they act as an orientation marker (otherwise the code will be rotational symmetric with itself).
+
+6. The remaining 16 positions can freely toggle. Due to #3, 8 to 10 of them must be occupied.
+
+7. There are (16 choose 8) + (16 choose 9) + (16 choose 10) = 32318 combinations.
+
+8. The diamonds can be put on any occupied position, so it multiplies an extra (17 choose 3) + (16 choose 3) + (15 choose 3) = 1695 combinations.
+
+9. It results in 54779010 combinations, just above 2^25 = 33554432
+   Which is reasonable enough, as it is a 6x4 matrix with a little extra freedom.
+
+10. If we set aside 5 bits as redundancy, then the Reversi Code can encode 20 bits payload. This is a reasonable guess in the sense that 20% redundancy provides good error detection capability.
+
+11. This is merely a combinatorial analysis representing the theoretic capacity of the barcode. Even given answers of the payload, it is extremely hard to reverse engineer the complete encoding scheme.
+
+12. There is a decimal number above every barcode on each label. From the layout of the label, we believe that it ranges from 000 to 999. It may or may not directly corresponds to the numeric value of the barcode.
+
+Now, we can engineer a barcode that looks exactly the same, but encode data in a different way.

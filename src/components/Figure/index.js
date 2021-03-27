@@ -4,7 +4,10 @@ import { jsx } from 'theme-ui'
 export const Figure = (props) => {
   let imgSrc = props.src;
   let descText = props.text || '';
+  let width = props.width || null;
   let height = props.height || null;
+  let maxWidth = props.maxWidth || 100 + '%';
+  let maxHeight = props.maxHeight || null;
   return (
   <div>
     <img
@@ -12,7 +15,7 @@ export const Figure = (props) => {
       style={{
         display: 'block',
         marginLeft: 'auto', marginRight: 'auto',
-        maxWidth: 100 + '%', height
+        width, height, maxWidth, maxHeight,
       }}
       src={'/public/' + imgSrc}
     />
