@@ -12,9 +12,9 @@ Authors: [Chris Tsang](//github.com/tyt2y3) and [Sanford Pun](//github.com/shpun
 -----
 
 This is our story of the design and implementation of a symbolic barcode system. 
-Try the <a href="https://symcode.visioncortex.org/" target="_blank">Demo Web App</a>.
+Try the Demo Web App on <a href="https://symcode.visioncortex.org/" target="_blank">symcode.visioncortex.org</a>.
 
-<iframe src="https://player.vimeo.com/video/529877814" style="width: 100%; height: 80vh; max-height: 75vw;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+<iframe src="https://player.vimeo.com/video/529877814?muted=1" style="width: 100%; height: 80vh; max-height: 75vw;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
 ## Forewords
 
@@ -57,15 +57,19 @@ We determined that a symbol set in the range of 16 to 64 symbols is a good balan
 What makes good symbols?
 
 1. Prominence
+
    First, the symbols have to stand out from the natural world, to manifest that they are created deliberately to convey a message but not a result of some natural phenomenon.
 
 2. Repeatable
+
    Symbols are constructed with specific tools and processes that can be taught to other people. The meaning of a symbol should remain the same when reproduced, in which variation is tolerated.
 
 3. Distinctive
+
    Symbols within a set should not be similar with each other and have distinctive features allowing the reader to resolve ambiguity between symbols.
 
 4. Aesthetics
+
    Finally, good symbols should observe the aesthetics rules of the human eye, including being anti-symmetric, rotational symmetric, balanced and consistent. As a pointer, the [Gestalt Principles](https://en.wikipedia.org/wiki/Gestalt_psychology) are fantastic rules of thumb.
 
 With the above rules in mind, we designed a minimalistic symbol set. Each symbol is composed of multiple triangles, the basic geometric primitive. Each symbol is symmetric or anti-symmetric in overall, but exhibits asymmetry internally. They are like Tangram, in which a human child can easily reproduce the symbols by assembly some triangular pieces together.
@@ -155,15 +159,15 @@ Which is a surprisingly good classifier using only three comparisons. We can do 
 
 ### SymCode
 
-Our trace for SymCode symbols follows a similar scheme. We defined the symbol traces using only three comparisons (shape/weight analyses), namely vertical, horizontal, and diagonal comparisons.
+Our trace for SymCode symbols follows a similar scheme. We define the symbol traces starting from the three comparisons defined in the previous section.
 
-If the "number of dots" in each of the four quadrants of a symbol (in order of top-left, top-right, bottom-left, bottom-right) are denoted by non-negative quantities a,b,c,d respectively, the three comparisons are defined as follows:
+The pixel count in each of the four quadrants of a symbol (in order of top-left, top-right, bottom-left, bottom-right) are denoted by non-negative quantities `a`,`b`,`c`,`d` respectively, the three comparisons are defined as follows:
 
 <Figure text='Grid quadrants' src='symcode/grid abcd.svg' height='200px'/>
 
-* Vertical comparison = (a+b) vs (c+d)
-* Horizontal comparison = (a+c) vs (b+d)
-* Diagonal comparison = (a+d) vs (b+c)
+* Vertical comparison = `(a+b)` vs `(c+d)`
+* Horizontal comparison = `(a+c)` vs `(b+d)`
+* Diagonal comparison = `(a+d)` vs `(b+c)`
 
 Below are two examples:
 
@@ -227,15 +231,15 @@ The trace partitions the symbol set into smaller, mutually-exclusive subsets. Th
 
 As searching through traces is much more efficient than comparing with each symbol individually, traces also help with performance.
 
-Most importantly, it provides us a guidance in designing the symbols to maximize differences among the symbol set.
+Most importantly, it provides us a guidance in designing the symbols to maximize differences within the symbol set.
 
-## Image Processing Pipeline
+## Scanning Pipeline
 
 The pipeline of SymCode scanner consists of 4 stages: `finder`, `fitter`, `recognizer`, `decoder`.
 
 Each stage below begins with a more general description of the processing stage (general across any SymCode), followed by explanation of the implementation of Acute32.
 
-### Stage 1: Locate Finder Candidates
+### Stage 1: Locating Finder Candidates
 
 We first binarize the input color image using an adaptive thresholding strategy, shapes are then extracted from a binary image by clustering.
 
@@ -261,25 +265,25 @@ In essence, this stage chooses the correct perspective transform to be used in t
 
 Each perspective transform **converts the image space into *an* object space** (but not necessarily the correct one) and **is defined by (at least) 4 point pairs** (source and destination points), where each pair consists of **a point in the image space** and **the other one in the object space**.
 
-Since we have obtained a list of finder candidates from the previous stage, we can extract ***n* feature points in the image space** from them. Matching the 4-permutations(or combinations) of them to the **4 predefined feature points in the object space** gives us at most *n permute (or choose) 4 = k* perspective transforms (deriving the transform from point pairs is purely mathematics and is beyond the scope of this article).
+Since we have obtained a list of finder candidates from the previous stage, we can extract ***n* feature points in the image space** from them. Matching the 4-permutations of them to the **4 predefined feature points in the object space** gives us at most *n permute 4 = k* perspective transforms.
 
-It is indeed infeasible to apply each transformation and generate *k* object spaces to choose the correct one. Therefore, we need to design some methods to evaluate each transform. The simplest way is to **define some extra feature points in the object space as *check points***, which are **re-projected to the image space**, and **check if the feature exists there** (if the feature exists there, you are more confident that the transform is the correct one).
+It is inefficient to accept each transformation and generate *k* object spaces to proceed to next stage. Therefore, we need to design a method to evaluate each transform and chooses which ones to proceed. The simplest way is to **define some extra feature points in the object space as *check points***, which are **re-projected to the image space**, and **check if the feature exists there**, and reject the candidate otherwise.
 
 ### Acute32
 
-The re-projection method mentioned above hardly works on `CircleFinder` because each circle finder only gives 1 feature point.
+The re-projection method mentioned above could not work for us because circles do not provide extra feature points for us to verify.
 
-`Acute32TransformFitter::evaluate_transform` takes each of the *k* perspective transforms and calculates an error value.
+Instead, we take each of the *k* perspective transforms and calculates an error value.
 
-We define 4 **object check points** as the top of the 4 circle finders in the object space. Re-projecting these 4 points to the image space, we obtain the **image check points** (*i1* to *i4*). Furthermore, we denote the **centres of the circle finders** in the **image space**, in the same order as the previously defined points, by *c1* to *c4* (illustrated below).
+We define 4 **object check points** as the top of the 4 circle finders in the object space. Re-projecting these 4 points to the image space, we obtain the **image check points** (*i1* to *i4*). Furthermore, we denote the **centres of the circle finders** in the **image space**, in the same order as the previously defined points, by *c1* to *c4*.
 
-Our metric of evaluation relies on the most basic properties of vectors: **magnitude and direction**. Only 4 vectors interest us here: the vectors from the centres of finders to the image check points, and we denote them by *v1* to *v4* respectively.
+Our metric of evaluation relies on **magnitude and direction** of the difference vector. 4 vectors interest us here: the vectors from the centres of finders to the image check points, and we denote them by *v1* to *v4* respectively.
 
 <Figure text='Transform evaluation points and vectors: the 4 green vectors are v1 to v4' src='symcode/transform_evaluation.png'/>
 
-Therefore, choosing the correct transform is effectively **minimizing the variances** in the magnitude and direction of *v1* to *v4*.
+We observed that given a correct transform, the 4 green vectors are consistently pointing in the same direction, with their magnitudes less uniform but still very similar. We found it effective to choose the transform with the **minimum variance** among *v1* to *v4*.
 
-### Stage 3: Recognize Symbols
+### Stage 3: Recognizing Symbols
 
 In the previous stage, we have obtained a perspective transform which converts between the image and object spaces. Next, we're going to rectify the input image into a code image, and recognize the symbols on it.
 
@@ -301,7 +305,7 @@ Once we have the images, we can **evaluate their traces** and compare them with 
 
 Each symbol is mapped to a unique bit string, and they are concatenated into a longer bit string.
 
-### Stage 4: Decode the SymCode
+### Stage 4: Decoding the SymCode
 
 This stage performs error detection (possibly correction) and extract the payload.
 
