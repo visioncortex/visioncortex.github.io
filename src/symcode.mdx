@@ -223,11 +223,15 @@ Now we have a more balanced distribution.
 
 ### Advantages of traces
 
-Traces enhance robustness against noisy inputs. The trace partitions the symbol set into smaller, mutually-exclusive subsets. As searching through traces is much more efficient than comparing with each symbol individually, traces also help with performance.
+The trace partitions the symbol set into smaller, mutually-exclusive subsets. This enhances robustness against noisy inputs.
+
+As searching through traces is much more efficient than comparing with each symbol individually, traces also help with performance.
+
+Most importantly, it provides us a guidance in designing the symbols to maximize differences among the symbol set.
 
 ## Image Processing Pipeline
 
-The processing pipeline of SymCode consists of 4 stages: `finder`, `fitter`, `recognizer`, `decoder`.
+The pipeline of SymCode scanner consists of 4 stages: `finder`, `fitter`, `recognizer`, `decoder`.
 
 Each stage below begins with a more general description of the processing stage (general across any SymCode), followed by explanation of the implementation of Acute32.
 
@@ -241,17 +245,17 @@ A minimum of 4 feature points is needed because at least **4 point correspondenc
 
 ### Acute32
 
-Acute32 uses circles as finders because they are distinct from the heavily cornered symbol set.
+Acute32 uses circles as finders because they are distinct from the heavily cornered symbol set. The 4 finders are arranged in a Y shaped manner to break the rotational symmetry with itself.
 
 The advantage of using a circle is that, in general, it always transforms into an ellipse under any perspective distortion, making it relatively easy to detect. 
 
-The disadvantage is the **lack of corners in circles**. As a consequence, we need to put at least 4 finders on a symcode image.
+The disadvantage is the **lack of corners in circles**. It is too easy to detect false positives because there are indeed many circles in real life.
 
-### Stage 2: Fit Perspective Transform
+### Stage 2: Fitting Perspective Transform
 
 We define the "**image space**" as the space of pixels on the **input frame**, and the "**object space**" as the space of pixels on the **code image** (whose boundary is predefined). An image space is simply the input frame image. An object space can either be generated using a code instance, or by rectifying the corresponding image space.
 
-<Figure text='An example of image space (input frame)' src='symcode/image_object_space_example.png' width='800px'/>
+<Figure text='Left: image space; Right: object space' src='symcode/image_object_space_example.png' width='800px'/>
 
 In essence, this stage chooses the correct perspective transform to be used in the next stage.
 
@@ -263,17 +267,17 @@ It is indeed infeasible to apply each transformation and generate *k* object spa
 
 ### Acute32
 
-The re-projection method mentioned above hardly works on `CircleFinder` because each circle finder only gives 1 feature point. The only way to obtain more feature points as check points is to add even more finders into the code image.
+The re-projection method mentioned above hardly works on `CircleFinder` because each circle finder only gives 1 feature point.
 
 `Acute32TransformFitter::evaluate_transform` takes each of the *k* perspective transforms and calculates an error value.
 
 We define 4 **object check points** as the top of the 4 circle finders in the object space. Re-projecting these 4 points to the image space, we obtain the **image check points** (*i1* to *i4*). Furthermore, we denote the **centres of the circle finders** in the **image space**, in the same order as the previously defined points, by *c1* to *c4* (illustrated below).
 
-Our metric of evaluation relies on the most basic properties of vectors: **direction and norm**. Only 4 vectors interest us here: the vectors from the centres of finders to the image check points, and we denote them by *v1* to *v4* respectively.
+Our metric of evaluation relies on the most basic properties of vectors: **magnitude and direction**. Only 4 vectors interest us here: the vectors from the centres of finders to the image check points, and we denote them by *v1* to *v4* respectively.
 
 <Figure text='Transform evaluation points and vectors: the 4 green vectors are v1 to v4' src='symcode/transform_evaluation.png'/>
 
-Therefore, choosing the most correct transform is equivalent to **minimizing the variances** in the directions and norms of *v1* to *v4*.
+Therefore, choosing the correct transform is effectively **minimizing the variances** in the magnitude and direction of *v1* to *v4*.
 
 ### Stage 3: Recognize Symbols
 
@@ -293,9 +297,9 @@ Assuming the transform is correct, the coordinates of the symbols on the code im
 
 The bounding boxes in blue are all clusters found on the code image. The boxes in red are the grouped clusters used to recognize each symbol.
 
-Once we have the images, we can **evaluate their traces** and compare them with the ones in our symbol library, obtaining **a small number of candidates** for each symbol image. Each of these candidates is compared to the symbol image and the one with the **lowest delta** is the final predicted symbol.
+Once we have the images, we can **evaluate their traces** and compare them with the ones in our symbol library, obtaining **a small number of candidates** for each symbol image. Each of these candidates is compared to the symbol image and the one with the **lowest delta** is the final recognized symbol.
 
-Each symbol in the symbol set is mapped to a unique bit string, so each `SymCode` instance concatenates a sequence of bit strings into a longer one. This long bit string is the information carried by the `SymCode` instance.
+Each symbol is mapped to a unique bit string, and they are concatenated into a longer bit string.
 
 ### Stage 4: Decode the SymCode
 
@@ -303,11 +307,11 @@ This stage performs error detection (possibly correction) and extract the payloa
 
 ### Acute32
 
-As there are 32 symbols in the set of Acute32, each symbol can encode 5 bits. Each `SymCode` instance encodes *25* raw bits, where *20* bits are payload and *5* bits are CRC checksum.
+As there are 32 symbols in the set of Acute32, each symbol can encode 5 bits. There are 5 data symbols and 4 finders in the 3x3 configuration. It can easily be extended to a 6x4 to carry more data. For now, each `SymCode` instance encodes *25* raw bits, where *20* bits are payload and *5* bits are CRC checksum.
 
 ## Conclusion
 
-We developed a theoretic as well as a programming framework for designing and implementing symbolic barcodes. The programming library is available as `symcode`. For those who simply want to integrate SymCode into your existing application, please refer to the wasm distribution `acute32` which is ready to use in any browser based Javascript projects.
+We developed a theoretic as well as a programming framework for designing and implementing symbolic barcodes. The programming library is available as [`symcode`](https://github.com/visioncortex/symcode). For those who simply want to integrate SymCode into your application, please refer to the wasm distribution [`acute32`](https://github.com/visioncortex/acute32) which is ready to use in any browser based Javascript projects.
 
 ## About Vision Cortex
 
@@ -317,4 +321,4 @@ Communication is metaphysical. Communication between two humans is a language ga
 
 This story is a manifest of the philosophy behind Vision Cortex, and a glimpse of the ongoing research and development by the Vision Cortex Research Group.
 
-If you enjoyed the reading and appreciate our work, consider starring (on [GitHub](https://github.com/visioncortex)), discuss (on Reddit), share (on [Twitter](https://twitter.com/visioncortex)) and collaborate.
+If you enjoyed the reading and appreciate our work, consider starring (on [GitHub](https://github.com/visioncortex/visioncortex)), discuss (on Reddit / [GitHub](https://github.com/visioncortex/visioncortex/discussions)), share (on [Twitter](https://twitter.com/visioncortex)) and collaborate.
