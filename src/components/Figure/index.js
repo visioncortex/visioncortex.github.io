@@ -4,6 +4,7 @@ import { jsx } from 'theme-ui'
 export const Figure = (props) => {
   let imgSrc = props.src;
   let descText = props.text || '';
+  let altText = props.alt ? props.alt : descText;
   let width = props.width || null;
   let height = props.height || null;
   let maxWidth = props.maxWidth || 100 + '%';
@@ -11,7 +12,7 @@ export const Figure = (props) => {
   return (
   <div>
     <img
-      alt={descText}
+      alt={altText}
       style={{
         display: 'block',
         marginLeft: 'auto', marginRight: 'auto',
