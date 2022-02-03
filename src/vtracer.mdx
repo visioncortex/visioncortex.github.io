@@ -48,7 +48,7 @@ Path simplification consists of 2 steps:
 
 From the previous stage, we have obtained a path whose consecutive edges must have different directions, i.e. the shape is represented by the minimum number of edges with 100% fidelity. However, to represent slant lines and curves in raster graphics, “jaggies” (or pixel staircases) inevitably occur. In this step, we aim at removing these artifacts.
 
-To replace a staircase with a straight line (hence “removing” it), one may adopt an outset (“additive”) or inset (“subtractive”) approach. Both approaches are justifiable in difference contexts, so the key is to maintain consistency in the same shape. In order to determine which points to keep, we make use of the <i>signed area</i>.
+To replace a staircase with a straight line (hence “removing” it), one may adopt an outset (“additive”) or inset (“subtractive”) approach. Both approaches are justifiable in difference contexts, so the key is to maintain consistency in the same shape. In order to determine which points to keep, we make use of the *signed area*.
 
 <Figure src='vtracer/Staircase.svg' />
 
@@ -60,7 +60,7 @@ For each point on the staircase, we calculate the signed area of the triangle fo
 
 ### Simplify by Limiting penalties
 
-The path can be further simplified by evaluating the <i>penalty</i> from replacing a subpath with one long edge from the first to the last point.
+The path can be further simplified by evaluating the *penalty* from replacing a subpath with one long edge from the first to the last point.
 
 <Figure src='vtracer/RemoveWobble.svg' text='Left: Path with wobbles. Right: Path approximated by red line, removing wobbles' />
 
@@ -80,7 +80,7 @@ What we have now is a simplified polygon with high fidelity. However, if we feed
 
 ### 4-Point Scheme
 
-VTracer adapts from the <i>4-Point Scheme</i> subdivision algorithm, which is an interpolating smoothing method. The problem of the 4-Point Scheme is that all vertices would be smoothed into round corners, which, from our point of view, is a loss of fidelity.
+VTracer adapts from the *4-Point Scheme* subdivision algorithm, which is an interpolating smoothing method. The problem of the 4-Point Scheme is that all vertices would be smoothed into round corners, which, from our point of view, is a loss of fidelity.
 
 <Figure src='vtracer/4-PointScheme.svg' text='4-Point Scheme performed on segment A₁A₂' />
 
@@ -88,7 +88,7 @@ VTracer adapts from the <i>4-Point Scheme</i> subdivision algorithm, which is an
 
 ### Finding corners
 
-To preserve corners, we first have to locate them. VTracer finds corners by checking the <i>angle difference</i> at each vertex. If the absolute angle difference exceeds a certain threshold, the vertex is considered to be a corner.
+To preserve corners, we first have to locate them. VTracer finds corners by checking the *angle difference* at each vertex. If the absolute angle difference exceeds a certain threshold, the vertex is considered to be a corner.
 
 <Figure src='vtracer/Corner.svg' />
 
@@ -124,9 +124,9 @@ The path is now populated with nicely positioned and sufficiently dense points t
 
 ### Finding Splice Points
 
-To define a splice point, we make use of the <i>signed angle differences</i>. Interpreting each edge along the path as vectors, we can define the signed angle difference from edge eᵢ to eᵢ₊₁ as the 2D angle of rotation θ ∊ (-π, π] required to rotate eᵢ to the same direction as eᵢ₊₁ (assume positive θ in clockwise direction).
+To define a splice point, we make use of the *signed angle differences*. Interpreting each edge along the path as vectors, we can define the signed angle difference from edge eᵢ to eᵢ₊₁ as the 2D angle of rotation θ ∊ (-π, π] required to rotate eᵢ to the same direction as eᵢ₊₁ (assume positive θ in clockwise direction).
 
-It is sufficient for a vertex to be a splice point if it passes one of two tests: <i>point of inflection test</i> and <i>angle displacement test</i>.
+It is sufficient for a vertex to be a splice point if it passes one of two tests: *point of inflection test*and *angle displacement test*.
 
 Points of inflection can be found by tracking the signs of angle differences along the path. When the concavity of the path changes at a certain point, the sign of the signed angle difference also changes at that point.
 
