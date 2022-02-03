@@ -1,23 +1,23 @@
 ---
-name: Shape Completion
-route: /shape-completion-docs
+name: ShapeSense
+route: /shape-sense-docs
 ---
 
 import { Figure } from './components/Figure'
 
-# Shape Completion
+# ShapeSense - Shape Completion by Curve Stitching
 
-Author: [Sanford Pun](//github.com/shpun817) | Editor: [Chris Tsang](//github.com/tyt2y3) | Published: 2021-12-03
+Researcher: [Sanford Pun](//github.com/shpun817) | Supervisor: [Chris Tsang](//github.com/tyt2y3) | Published: 2022-01-02
 
 -----
 
 This project aims at recovering (completing) the **structure** of a shape after a portion of it is erased. In other words, given a shape with arbitrarily "discontinued parts", assuming that we have **no prior knowledge** about the shape, how can we **reasonably connect the endpoints** at the discontinuities?
 
-<Figure src='shape-completion/hole_showcase.png' text='A shape with a hole. There are 6 endpoints in this case.' alt='Hole showcase' />
+<Figure src='shape-sense/hole_showcase.png' text='A shape with a hole. There are 6 endpoints in this case.' alt='Hole showcase' />
 
 In the demo images shown throughout this documentation, the following coloring scheme is used: Black pixels denote the background. Red pixels denote the rasterized *shape*. White pixels denote the *hole*. The (imaginary) intersection of the shape and the hole is the aforementioned "discontinued parts", which is what we try to recover.
 
-<Figure src='shape-completion/recovered_shape.png' text='An example of completed shape.' alt='Recovered shape showcase.' />
+<Figure src='shape-sense/recovered_shape.png' text='An example of completed shape.' alt='Recovered shape showcase.' />
 
 Blue pixels will be used to denote the outline of the recovered parts of the shape.
 
@@ -27,7 +27,7 @@ The whole process of shape completion involves intrapolating the missing outline
 
 Let's begin the experiment with simple shapes, like an ellipse.
 
-<Figure src='shape-completion/simple/ellipse_groundtruth_and_with_hole.png' text='The first image is the ground truth (for reference only). The second image is the input to the ShapeCompletion pipeline.' alt='An ellipse ground truth and another one with a hole.'/>
+<Figure src='shape-sense/simple/ellipse_groundtruth_and_with_hole.png' text='The first image is the ground truth (for reference only). The second image is the input to the ShapeCompletion pipeline.' alt='An ellipse ground truth and another one with a hole.'/>
 
 ### Path Preprocessing
 
@@ -35,13 +35,13 @@ The first stage of the pipeline is to obtain and process the paths (curves) repr
 
 [Vision Cortex's core library](//github.com/visioncortex/visioncortex) provides the necessary utilities to extract raw paths from an image.
 
-<Figure src='shape-completion/simple/ellipse_preprocessed_path.png' text='Yellow pixels denote the identified outline of the shape after simplification.' alt='Path segments after preprocessing.' />
+<Figure src='shape-sense/simple/ellipse_preprocessed_path.png' text='Yellow pixels denote the identified outline of the shape after simplification.' alt='Path segments after preprocessing.' />
 
 ### Tail Tangent Approximation
 
 The next step is to (divide, if needed, and) extract the two curves from the two endpoints; smoothing is performed to better approximate the tangents near the endpoints (*tails* of the whole curve). After this step, we will obtain two tangents (2-D direction vectors), one at each tail. We will call these tangents *tail tangents*.
 
-<Figure src='shape-completion/simple/tail_tangent_approx.png' text='The naive approach is to simply take A as the tail tangent, but better (more practical/useful) approximations may be obtained by taking more subsequent segments into account (e.g. B, C, D).' alt='Tail tangent approximation results.' />
+<Figure src='shape-sense/simple/tail_tangent_approx.png' text='The naive approach is to simply take A as the tail tangent, but better (more practical/useful) approximations may be obtained by taking more subsequent segments into account (e.g. B, C, D).' alt='Tail tangent approximation results.' />
 
 A number of factors determine the accuracy and robustness of tail tangent approximation. Our implementation supports configurations like how many points to consider from the tails, how long should the segments being considered accumulate to, and how the weights for each segment should change towards the tails.
 
@@ -54,7 +54,7 @@ With the two endpoints and their corresponding tail tangents, we can calculate f
 
 The first scenario is when the two tail tangents point to the same side with respect to the line connecting the two endpoints (we call this line the *base*).
 
-<Figure src='shape-completion/simple/intrapolate_same_side.png' text='Both tail tangents at A and B point to the same side of the red, dashed line (the base).' alt='Intrapolation when both tail tangents point to the same side' />
+<Figure src='shape-sense/simple/intrapolate_same_side.png' text='Both tail tangents at A and B point to the same side of the red, dashed line (the base).' alt='Intrapolation when both tail tangents point to the same side' />
 
 <div>
     To construct the curve between A and B, we need to identify two *control points* (C<sub>A</sub> and C<sub>B</sub>) between them. In our approach, we started with what we think is intuitive and made tweaks to resolve some issues in practice; this is what we end up with:
@@ -67,21 +67,21 @@ The first scenario is when the two tail tangents point to the same side with res
 </div>
 
 > <strong>What if the intersection was in the other direction?</strong><br />
-<Figure src='shape-completion/simple/intrapolation_bent_outwards.png' text={`If the line originating from A and B intersect in the negative direction (as shown above), we simply correct them by bending them inwards to be perpendicular with the base.`} alt='Tail tangents bent outwards; pulled back to be perpendicular to the base.' />
+<Figure src='shape-sense/simple/intrapolation_bent_outwards.png' text={`If the line originating from A and B intersect in the negative direction (as shown above), we simply correct them by bending them inwards to be perpendicular with the base.`} alt='Tail tangents bent outwards; pulled back to be perpendicular to the base.' />
 
 Another scenario is when the two tail tangents point to different sides of the base, as below.
 
-<Figure src='shape-completion/simple/intrapolate_diff_sides.png' text='A simple dot product operation can be used to detect such a scenario.' alt='Intrapolation with tail tangents pointing to different sides of the base' />
+<Figure src='shape-sense/simple/intrapolate_diff_sides.png' text='A simple dot product operation can be used to detect such a scenario.' alt='Intrapolation with tail tangents pointing to different sides of the base' />
 
 In this case, any intersections detected are meaningless because they must lie outside the hole region. Instead, we divide the curve into two halves and intrapolate two subcurves from each endpoint to the mid-point of the base as shown above.
 
 The last possible scenario is trivial to handle: when the lines are coincident, simply connect the endpoints with a straight line.
 
-<Figure src='shape-completion/simple/intrapolate_coincidence.png' alt='Intrapolation becomes connecting endpoints with a straight line in coincidence' />
+<Figure src='shape-sense/simple/intrapolate_coincidence.png' alt='Intrapolation becomes connecting endpoints with a straight line in coincidence' />
 
 The case of our simple ellipse falls into the first scenario. The intrapolated outline is shown as follows:
 
-<Figure src='shape-completion/simple/ellipse_intrapolated.png' alt='Full ellipse outline after intrapolation.' />
+<Figure src='shape-sense/simple/ellipse_intrapolated.png' alt='Full ellipse outline after intrapolation.' />
 
 ### Color filling
 
@@ -95,7 +95,7 @@ Texture     |Solid part of the shape; To be filled in this section. (Red in our 
 
 The Structure elements divide the hole into several subregions. Each of these subregions contains wholly either Blank or Texture elements.
 
-<Figure src='shape-completion/simple/filling_subregions.png' alt='Hole of ellipse divided into two subregions' />
+<Figure src='shape-sense/simple/filling_subregions.png' alt='Hole of ellipse divided into two subregions' />
 
 In our example, the hole is divided by the intrapolated curve into two subregions. In order to guess whether to fill the subregions with Blank or Texture elements, we check if the number of Blank elements outside the hole boundary exceeds a certain tolerance.
 
@@ -105,17 +105,17 @@ For the top subregion, the pixels outside the left, top, and right sides of the 
 
 After filling, the shape of the ellipse is completed, as follows:
 
-<Figure src='shape-completion/simple/ellipse_complete.png' alt='Complete ellipse' />
+<Figure src='shape-sense/simple/ellipse_complete.png' alt='Complete ellipse' />
 
 If we move the hole around, shape completion yields the following results:
 
-<Figure src='shape-completion/simple/ellipse_diff_holes.png' alt='Complete ellipses with different holes' />
+<Figure src='shape-sense/simple/ellipse_diff_holes.png' alt='Complete ellipses with different holes' />
 
 ## Complex Shape Completion
 
 The process of shape completion shown above has been rather straightforward because there is a strong assumption - the hole cuts the shape at exactly 2 endpoints only. Consider the following case:
 
-<Figure src='shape-completion/complex/ellipse_hole_across.png' text='At a glance, we can tell how the endpoints should be grouped - A with B, and C with D, but how can we model the problem to match the endpoints such that the result of color filling always makes sense?' alt='Ellipse with a long hole cutting its boundary at 4 endpoints' />
+<Figure src='shape-sense/complex/ellipse_hole_across.png' text='At a glance, we can tell how the endpoints should be grouped - A with B, and C with D, but how can we model the problem to match the endpoints such that the result of color filling always makes sense?' alt='Ellipse with a long hole cutting its boundary at 4 endpoints' />
 
 ### Endpoint Matching
 
@@ -123,7 +123,7 @@ The process of shape completion shown above has been rather straightforward beca
 
 An intuitive approach might be by endpoint proximity in a greedy manner. If we simply connect each endpoint to its nearest neighbor, the correct matching is found for the above case. However, this approach ceases to work for the following case:
 
-<Figure src='shape-completion/complex/ellipse_local_proximity_counterexample.png' text='The correct matching seems to be A with B and C with D, but the top two endpoints are the closest.' alt='Tall hole over ellipse.' />
+<Figure src='shape-sense/complex/ellipse_local_proximity_counterexample.png' text='The correct matching seems to be A with B and C with D, but the top two endpoints are the closest.' alt='Tall hole over ellipse.' />
 
 #### Avoiding Intersections
 
@@ -133,7 +133,7 @@ Before intrapolation, some intersecting curves can already be identified by look
 
 Imagine we have 4 endpoints A, B, C, and D. If the line segment AB intersects with CD, then the curve intrapolated from A to B must intersect with that from C to D.
 
-<Figure src='shape-completion/complex/line_intersect_implies_curve_intersect.png' alt='Line intersection among endpoints implies intersection of intrapolated curves' />
+<Figure src='shape-sense/complex/line_intersect_implies_curve_intersect.png' alt='Line intersection among endpoints implies intersection of intrapolated curves' />
 
 Therefore, the first step to avoiding intersecting curves is to filter out matchings that contain intersecting lines.
 
@@ -151,12 +151,20 @@ From experimentation, we observed that most of the pain-inducing geometrical con
 
 <hr />
 
-<Figure src='shape-completion/animated_demo.gif' alt='Animated Demo.' />
+<Figure src='shape-sense/animated_demo.gif' alt='Animated Demo.' />
 
 As shown above, the performance of our implementation is stable for the most part. Occasionally, the pipeline (arguably) incorrectly handles the cases when tail tangents are (nearly) coincident to the hole boundaries.
 
-<Figure src='shape-completion/incorrect.png' alt='Arguably incorrect case.' />
+<Figure src='shape-sense/incorrect.png' alt='Arguably incorrect case.' />
 
+## Discussion
 
+The direct application of this algorithm is symbolic recognition, where a part of a symbol might be obscured artificially or accidentally.
 
+It can also be used in image repairing provided we are able to construct a high level shape structures of a natural photograph.
 
+As only the local information around the unknown region is used, the above shape reconstruction operation is entropy neutral, where no new information is introduced and no priori knowledge is assumed.
+
+This is a key factor, consider that if we have priori knowledge or simply are making wild guesses to what the original symbol might be, it completely changes the problem or actually defies the reason of shape completion.
+
+Under the symbolic recognition framework we propose (will be detailed in another article), recognition is a macroscopic statistical measurement that would greatly benefit from missing pieces filled in.

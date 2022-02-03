@@ -11,6 +11,6 @@ export default {
         'SymCode',
         'Impression',
         'VTracer',
-        'Shape Completion'
+        'ShapeSense'
     ]
 }
