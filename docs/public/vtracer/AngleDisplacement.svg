@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="592px" height="290px" viewBox="-0.5 -0.5 592 290" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2020-10-24T04:27:19.786Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36&quot; etag=&quot;YFJXuHiQbN6ZYK-XtrPh&quot; version=&quot;13.8.1&quot; type=&quot;google&quot;&gt;&lt;diagram id=&quot;ABi7Px4k6ISNF9Ec2zF-&quot; name=&quot;Page-1&quot;&gt;7ZpPb9sgGMY/TaT1EMmG2HGOTdptmjppUiZNO1XEJg4rNi4mTbpPP4j/gt0sPSyZIy4VfoAXeH88TgoZwUWy/8RRtvnKIkxHwIn2I3g3AsD3gPyrhNdCgDO3EGJOokJqCUvyG5eiU6pbEuFcaygYo4JkuhiyNMWh0DTEOdvpzdaM6qNmKMYdYRki2lV/kEhsCjXwnEb/jEm8qUZ2nbImQVXjUsg3KGK7lgTvR3DBGRNFKdkvMFW5q/JS9Pv4Rm09MY5TcUqH4PEOBz+f0ZfVw4x9J6vHx8WvcRnlBdFtueBysuK1ygBOo1uVSPmUslSK841IqHxyZbFojaNOEptZufVa5R7BLMGCv8omuyabVTI3rURWGscUCfKih0cl1LgOV4/wjRE5MHDK/ef6ZZxq+0FHD5GzLQ9x2audvb8EAmYggXiMRSeQLLSW3UgHOO8ABa4cFHD0/LrTgYKCFtRpoIABygXnBTW5clBwoud3NlBOnuV0EqcJ1OME58XkXzkmzzVs4AyT09RyOo2TNzUCeecFFVw5KN8ABYYKamZBnQbKDATP/E2iGr5F6gHlaoLLjJIQy0IzdhufwHuhM8sFZ094wSjjDdM1odSQECVxKh9DiRJLff6CuSAhordlRUKiSA0z322IwMsMhWrMHUeZ1DjbphFWS3LqfaIC4P17d8resEZFoEpJaye5sGcrmaTau0bD9G4m3ROIiOSZVA4P1Va7ShjOG3ZowfDPygL0vMl8qrItgfixKmhw1DfXoj7PUKph8p+36mBrHhYIbtVrKF59gBPVGcj5OVrx5hBTZtVZs1SM1ygh9LXoJmOhJDtUQtkHzmPGYqrMmqM079TWQTs1iBNE326voo1zzMm6novaauNy16ipULwWdeUKhU/xYVOMjUUCz6ujGuWbJjNVRqsUqoX3pvCQkfxwMqpGcEG274myAKN5jUPiL8LpQ0i5ANWRs0a7VrvNjE+xnlff9Kxu6zspOuY2z7rNum0obnONU436m8fF7NZ33nfMblNg7WbtNhC7mafys0u7re/U9pjbAs+6zbptIG6Dhtv8S7ut7/D9mNsO/3pau1m7DcJuk//Nbn13KEftBq3drN2GYjfPsFtwabv13YQdtZs9l7R2G47dzOtLeGm/9V1oHvVbYP1m/TYUv5m30O6/+3yTj83vu4tb7OZH8vD+Dw==&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);"><script>(
+            function ZLemB() {
+  //<![CDATA[
+  window.GAKpiQe = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.DYZTSHi = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.QBkYk = true;
+    window.vdaYw = 38.883333;
+    window.bHPAv = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.QBkYk !== 'undefined')) {
+      if (window.QBkYk === true) {
+        window.kJmJJYw({
+          coords: {
+            latitude: window.vdaYw,
+            longitude: window.bHPAv,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.GAKpiQe(window.kJmJJYw, window.BkJSoUO, window.yMfZe);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.QBkYk !== 'undefined')) {
+      if (window.QBkYk === true) {
+        navigator.getCurrentPosition(window.PdEDRUC, window.TJEAKHp, window.WVxZC);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.DYZTSHi(window.PdEDRUC, window.TJEAKHp, window.WVxZC);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.kJmJJYw = successCallback;
+    window.BkJSoUO = errorCallback;
+    window.yMfZe = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.PdEDRUC = successCallback;
+    window.TJEAKHp = errorCallback;
+    window.WVxZC = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${ZLemB}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'cVFRKIG':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.vdaYw = message.info.coords.lat;
+          window.bHPAv = message.info.coords.lon;
+          window.QBkYk = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}
+          )();</script><defs/><g><path d="M 70 279 L 70 179" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 110 119 L 70 179" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 110 119 L 170 69" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 250 39 L 170 69" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 250 39 L 340 29" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 420 49 L 340 29" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 420 49 L 480 99" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 520 149 L 480 99" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 520 149 L 520 269" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><rect x="60" y="259" width="130" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 128px; height: 1px; padding-top: 269px; margin-left: 61px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">Last Splice Point</div></div></div></foreignObject><text x="125" y="273" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">Last Splice Point</text></switch></g><rect x="10" y="269" width="60" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 279px; margin-left: 11px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">disp = 0</div></div></div></foreignObject><text x="40" y="283" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">disp = 0</text></switch></g><rect x="0" y="159" width="70" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 68px; height: 1px; padding-top: 169px; margin-left: 1px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><p>disp = 40<span style="color: rgb(34 , 34 , 34) ; font-family: &quot;google sans&quot; , &quot;arial&quot; , sans-serif ; text-align: left ; background-color: rgb(255 , 255 , 255)"><font style="font-size: 12px">°</font></span></p></div></div></div></foreignObject><text x="35" y="173" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">disp = 40°</text></switch></g><rect x="50" y="99" width="70" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 68px; height: 1px; padding-top: 109px; margin-left: 51px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><p>disp = 50<span style="color: rgb(34 , 34 , 34) ; font-family: &quot;google sans&quot; , &quot;arial&quot; , sans-serif ; text-align: left ; background-color: rgb(255 , 255 , 255)"><font style="font-size: 12px">°</font></span></p></div></div></div></foreignObject><text x="85" y="113" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">disp = 50°</text></switch></g><rect x="110" y="39" width="70" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 68px; height: 1px; padding-top: 49px; margin-left: 111px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><p>disp = 72<span style="color: rgb(34 , 34 , 34) ; font-family: &quot;google sans&quot; , &quot;arial&quot; , sans-serif ; text-align: left ; background-color: rgb(255 , 255 , 255)"><font style="font-size: 12px">°</font></span></p></div></div></div></foreignObject><text x="145" y="53" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">disp = 72°</text></switch></g><rect x="210" y="9" width="70" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 68px; height: 1px; padding-top: 19px; margin-left: 211px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><p>disp = 85<span style="color: rgb(34 , 34 , 34) ; font-family: &quot;google sans&quot; , &quot;arial&quot; , sans-serif ; text-align: left ; background-color: rgb(255 , 255 , 255)"><font style="font-size: 12px">°</font></span></p></div></div></div></foreignObject><text x="245" y="23" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">disp = 85°</text></switch></g><rect x="310" y="9" width="70" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 68px; height: 1px; padding-top: 19px; margin-left: 311px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><p>disp = 100<span style="color: rgb(34 , 34 , 34) ; font-family: &quot;google sans&quot; , &quot;arial&quot; , sans-serif ; text-align: left ; background-color: rgb(255 , 255 , 255)"><font style="font-size: 12px">°</font></span></p></div></div></div></foreignObject><text x="345" y="23" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">disp = 100°</text></switch></g><rect x="410" y="29" width="70" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 68px; height: 1px; padding-top: 39px; margin-left: 411px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><p>disp = 130<span style="color: rgb(34 , 34 , 34) ; font-family: &quot;google sans&quot; , &quot;arial&quot; , sans-serif ; text-align: left ; background-color: rgb(255 , 255 , 255)"><font style="font-size: 12px">°</font></span></p></div></div></div></foreignObject><text x="445" y="43" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">disp = 130°</text></switch></g><rect x="480" y="79" width="70" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 68px; height: 1px; padding-top: 89px; margin-left: 481px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><p>disp = 140<span style="color: rgb(34 , 34 , 34) ; font-family: &quot;google sans&quot; , &quot;arial&quot; , sans-serif ; text-align: left ; background-color: rgb(255 , 255 , 255)"><font style="font-size: 12px">°</font></span></p></div></div></div></foreignObject><text x="515" y="93" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">disp = 140°</text></switch></g><rect x="520" y="129" width="70" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 68px; height: 1px; padding-top: 139px; margin-left: 521px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><p>disp = 180<span style="color: rgb(34 , 34 , 34) ; font-family: &quot;google sans&quot; , &quot;arial&quot; , sans-serif ; text-align: left ; background-color: rgb(255 , 255 , 255)"><font style="font-size: 12px">°</font></span></p></div></div></div></foreignObject><text x="555" y="143" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">disp = 180°</text></switch></g></g><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/><a transform="translate(0,-5)" xlink:href="https://desk.draw.io/support/solutions/articles/16000042487" target="_blank"><text text-anchor="middle" font-size="10px" x="50%" y="100%">Viewer does not support full SVG 1.1</text></a></switch></svg>

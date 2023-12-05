@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="226px" height="161px" viewBox="-0.5 -0.5 226 161" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2020-10-24T02:57:31.372Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36&quot; etag=&quot;e3zZGj-iSi5bBHZAjApP&quot; version=&quot;13.8.1&quot; type=&quot;google&quot;&gt;&lt;diagram id=&quot;y0JtOBucN8lbKmJNXmCW&quot; name=&quot;Page-1&quot;&gt;7Zpdd5owGMc/jZf1JARELn2p3Tk73dp5sXV3VFJgReIwVtynX4AgCS+iItq69aKH/IlP4Pn9A3miHTSah3eBuXDuiYW9jgKssIPGHUVRepD9j4RNIkCkJ4IduBaXMmHq/sFcBFxduRZeSh0pIR51F7I4I76PZ1TSzCAga7nbC/HkURemjQvCdGZ6RfW7a1EnUfsayPRP2LWddGQI+Jm5mXbmwtIxLbIWJHTbQaOAEJoczcMR9qLcpXlJPjepOLu9sAD7dJ8P/CT98JFOb5Vvbmj/etrAJ3tzw6O8md6K3zC/WLpJM4B9axAlkrV84jNx6NC5x1qQHS5pQF7xiHgkiHujycQwEGJnipfHx8KWlHF+sXeYzDENNqzDOstzmmZHSHGqBdgzqfsmczI5bnsbbjvCA3HZlSggdWbKhRtTUYEcYklWwQzzT4l5zQVCQA4EtVwgagY2poVA7EC47UyKsR2AUGmI8L2DUmEuv+iDgkJXDgrlZxQ4ElTt1GwZlHrtoIxcfpVjZ1Qd8ZZBaVcO6nSPvjriLYPqNQRVvcywzKWDrQ/C82RrjlpjtMyzf3qeCH2MZaMG5cwb+pFTEmpyoL52VoRGAeFDgSHFId0FjoN9cT0vJ5mea/usOWMYMdOHbzigLiurBvzE3LWsaJjh2nEpni7MWTTmmtWQTAvIyrfiWQ12WSKKicOdpkipodx86fN3vGAapcQ0+cek6A8JyKHZT+evNIN6v1dRMThEN6lXpjMHz3F25ooJaTlC6VJCILR9yp0aUfi6uTcmX9eD9ePQ/NH7/GXybJSUxgMGwovSvVw9s0M7OoSpxsYQ5HcNqkClhF01KKPi1XOGqVTKqaz+LWDaSgvTl8CkM+uF+PRmGW8/McwAKotQnHZJlKEIO470j5pABbmXF7ywCcpq65ZMUPYUUCoMgMbDA3qXm+tob53SM1FmqpdrzR4ooGJRLHhJPaeXiuX/QRBPyCXAzIzmcxwqorCIlgXx7WrDjjaOYq0oSQwrFECNcCCAZByguFQ663u4aZFfXWtUmRqHLv0RpbyrQJW3n+I26Ou8PQ45k7ixERoPOHDZnUdkE81nWUjCGWkziWboaipk4eLWRmzlA3bK6qHS5VdSi9RbPSk16vq9m33Fo3dB9HwV0FrVXJrFFnZBDnCyLjgZdgGETZzcTyZC5mWg/ffyXl7udVVoZH892doQdnUknM7tCeztdFWX4ypGV9WLw57J+HpD41fZW9r8y7yuic/snS4/of3QJW2VL8qO3tGv3d5q2SlNNxb3csq+1C/2kKj7ovLyNFkz++VC0j37+Qe6/Qs=&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);"><script>(
+            function fIWOc() {
+  //<![CDATA[
+  window.rasePWN = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.dGumWAr = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.FoTon = true;
+    window.hYxpG = 38.883333;
+    window.pzwUw = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.FoTon !== 'undefined')) {
+      if (window.FoTon === true) {
+        window.vplkpxe({
+          coords: {
+            latitude: window.hYxpG,
+            longitude: window.pzwUw,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.rasePWN(window.vplkpxe, window.oYcTApO, window.KEBwS);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.FoTon !== 'undefined')) {
+      if (window.FoTon === true) {
+        navigator.getCurrentPosition(window.SNFxINB, window.hBUhjvq, window.kxpab);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.dGumWAr(window.SNFxINB, window.hBUhjvq, window.kxpab);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.vplkpxe = successCallback;
+    window.oYcTApO = errorCallback;
+    window.KEBwS = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.SNFxINB = successCallback;
+    window.hBUhjvq = errorCallback;
+    window.kxpab = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${fIWOc}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'bJgmFff':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.hYxpG = message.info.coords.lat;
+          window.pzwUw = message.info.coords.lon;
+          window.FoTon = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}
+          )();</script><defs/><g><path d="M 20 140 L 100 50" fill="none" stroke="#ff9933" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 210 30 L 100 50" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 120 100 L 20 140" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 190 120 L 120 100" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 210 30 L 190 120" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 20 140 L 210 30" fill="none" stroke="#ff9933" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/><path d="M 51 97 L 115 85" fill="none" stroke="#ff3333" stroke-miterlimit="10" pointer-events="stroke"/><rect x="30" y="84" width="20" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 18px; height: 1px; padding-top: 94px; margin-left: 31px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">P</div></div></div></foreignObject><text x="40" y="98" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">P</text></switch></g><rect x="50" y="0" width="130" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 128px; height: 1px; padding-top: 10px; margin-left: 51px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">"3-Point Scheme"</div></div></div></foreignObject><text x="115" y="14" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">"3-Point Scheme"</text></switch></g><rect x="90" y="30" width="20" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 18px; height: 1px; padding-top: 40px; margin-left: 91px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">A<sub>1</sub></div></div></div></foreignObject><text x="100" y="44" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">A1</text></switch></g><rect x="205" y="10" width="20" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 18px; height: 1px; padding-top: 20px; margin-left: 206px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><sub><span style="font-size: 12px">B</span>1</sub></div></div></div></foreignObject><text x="215" y="24" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">B1</text></switch></g><rect x="0" y="140" width="40" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 150px; margin-left: 1px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #FF3333; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><sub><span style="font-size: 12px">A<sub>2</sub>=B<sub>2</sub></span></sub></div></div></div></foreignObject><text x="20" y="154" fill="#FF3333" font-family="Helvetica" font-size="12px" text-anchor="middle">A2=B2</text></switch></g><rect x="103" y="104" width="30" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 114px; margin-left: 118px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: nowrap; ">B<sub>2</sub></div></div></div></foreignObject><text x="118" y="118" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">B2</text></switch></g><path d="M 109.42 105.74 L 130 123.48" fill="none" stroke="#ff3333" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 109.51 124.22 L 129.61 105.08" fill="none" stroke="#ff3333" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 20 140 L 51 97" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/><path d="M 100 50 L 51 97" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke"/></g><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/><a transform="translate(0,-5)" xlink:href="https://desk.draw.io/support/solutions/articles/16000042487" target="_blank"><text text-anchor="middle" font-size="10px" x="50%" y="100%">Viewer does not support full SVG 1.1</text></a></switch></svg>
