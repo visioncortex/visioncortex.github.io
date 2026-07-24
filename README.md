@@ -1,7 +1,7 @@
 <div align="center">
 
   <img src="public/visioncortex-banner.png"/>
-  <h1>Vision Cortex - Semantic Computer Vision</h1>
+  <h1>Vision Cortex Research Lab</h1>
 
   <p>
     <strong>The official website of Vision Cortex</strong>
@@ -9,15 +9,30 @@
 
 </div>
 
-### Dev
-`npm run dev` will start a local development server at http://localhost:3000/.
+### Stack
+
+- Vite
+- React
+- Tailwind CSS
+- MDX for preserved research articles
+
+### Development
+
+`npm run dev` starts a local development server at http://localhost:3000/.
 
 ### Build
-`npm run build` will generated static site in .docz/docs/.  
-`npm run serve` will serve the built files.
+
+`npm run build` generates the static site in `dist/`.
+
+The build also writes route entry files for the legacy article URLs:
+
+- `/symcode-docs/`
+- `/impression-docs/`
+- `/vtracer-docs/`
+- `/shape-sense-docs/`
+- `/reversi-docs/`
 
 ### Publish
-Simply push to master and the gh-pages will be updated.
 
-### Credit
-Powered by [docz](//www.docz.site/)
+Publishing is handled by GitHub Actions in `.github/workflows/deploy.yml`.
+The workflow builds the site and deploys the `dist/` artifact to GitHub Pages.

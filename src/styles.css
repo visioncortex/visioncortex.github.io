@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #08111f;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.prose iframe {
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #0f172a;
+}
+
+.prose figure {
+  margin: 2rem 0;
+}
+
+.prose figcaption {
+  margin-top: 0.75rem;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
