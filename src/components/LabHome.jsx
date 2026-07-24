@@ -16,7 +16,7 @@ const projects = [
     href: 'https://xsvg.visioncortex.org/',
     iconSrc: '/project-icons/xsvg.svg',
     summary:
-      'A spiritual successor to SVG2: modern vector graphics primitives for richer typography, programmable shape transforms, and browser-ready mesh gradients.',
+      'Graphic design for AI, no pixels required. XSVG is the vector format SVG2 should have been — typography, shape transforms, mesh gradients — with an MCP tool that lets LLMs design straight in structure.',
     points: ['Typography and typesetting', 'Shape transforms', 'Mesh gradients'],
     visual: 'mesh',
   },
@@ -26,7 +26,7 @@ const projects = [
     href: 'https://automata.visioncortex.org/',
     icon: Monitor,
     summary:
-      'A declarative workflow engine for AI agents to control Windows desktop apps through structured, observable UI automation.',
+      'Read any screen as structure, not pixels. UI Automata turns what is on the display into a live element tree, then lets agents drive it through declarative, observable workflows.',
     points: ['Declarative YAML workflows', 'UIA, DOM, and vision modes', 'Agent-native MCP tooling'],
     visual: 'automata',
   },
@@ -36,16 +36,22 @@ const projects = [
     href: 'https://github.com/visioncortex/vtracer/',
     icon: Spline,
     summary:
-      'The next generation of VTracer builds on the well-known open-source vectorizer with an ML-based pipeline for cleaner, more editable SVG reconstruction.',
-    points: ['VTracer 1 proven in production', 'ML-based VTracer 2', 'Editable SVG reconstruction'],
+      'Vectorizing is entropy in reverse. VTracer 2 pulls clean, editable vector structure back out of a flat field of pixels — the widely-adopted vectorizer thousands of developers trust, rebuilt around a machine-learning core.',
+    points: ['Proven in production', 'ML-based pipeline', 'Editable SVG output'],
     visual: 'vtracer',
   },
 ]
 
+const transforms = [
+  ['A live screen', 'UI Element tree'],
+  ['A raster image', 'Editable vectors'],
+  ['A design brief', 'Vector artwork'],
+]
+
 const signals = [
-  ['3', 'Flagship systems'],
-  ['2026', 'Agent-native focus'],
-  ['SVG', 'Visual reasoning substrate'],
+  ['3', 'Systems, one thesis'],
+  ['Open', 'Source at the core'],
+  ['SVG', 'The common substrate'],
 ]
 
 function ProjectVisual({ type }) {
@@ -228,14 +234,15 @@ export default function LabHome() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-cyan-100">
               <FlaskConical className="h-3.5 w-3.5" />
-              AI-driven research lab
+              AI research lab
             </div>
             <h1 className="mt-8 max-w-5xl text-5xl font-semibold leading-[0.95] tracking-normal text-white sm:text-6xl lg:text-7xl">
-              Vision Cortex builds visual intelligence systems for agents, graphics, and code.
+              Pixels are for humans. Machines need structure.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-              We work at the boundary between computer vision, structured automation, and vector graphics:
-              turning pixels, interfaces, and SVGs into representations machines can reason with.
+              Vision Cortex is a research lab building the visual intelligence layer for AI. Whether it is
+              reading a screen, vectorizing an image, or composing new graphics, our systems keep machines
+              working in structure — never drowning in raw pixels.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a className="inline-flex items-center justify-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-semibold text-cortex-ink hover:bg-cyan-100" href="#flagships">
@@ -253,18 +260,17 @@ export default function LabHome() {
             <div className="rounded-md border border-white/10 bg-cortex-ink/80 p-5">
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.22em] text-cyan-200">Lab Runtime</p>
-                  <p className="mt-1 text-2xl font-semibold">perception stack</p>
+                  <p className="text-xs uppercase tracking-[0.22em] text-cyan-200">The core transform</p>
+                  <p className="mt-1 text-2xl font-semibold">everything becomes structure</p>
                 </div>
                 <Cpu className="h-8 w-8 text-cortex-gold" />
               </div>
               <div className="mt-5 grid gap-3">
-                {['Capture visual state', 'Extract symbolic structure', 'Compile agent actions', 'Render portable output'].map((item, index) => (
-                  <div className="flex items-center gap-3 rounded-md border border-white/10 bg-white/[0.04] p-3" key={item}>
-                    <span className="flex h-8 w-8 items-center justify-center rounded bg-cyan-300/15 font-mono text-sm text-cyan-100">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className="text-sm text-slate-200">{item}</span>
+                {transforms.map(([from, to]) => (
+                  <div className="flex items-center gap-3 rounded-md border border-white/10 bg-white/[0.04] p-3" key={to}>
+                    <span className="flex-1 text-sm text-slate-400">{from}</span>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-cyan-300" />
+                    <span className="flex-1 text-right text-sm font-medium text-white">{to}</span>
                   </div>
                 ))}
               </div>
@@ -286,7 +292,7 @@ export default function LabHome() {
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cortex-blue">Flagship Projects</p>
                 <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight tracking-normal text-slate-950">
-                  Three systems pushing computer graphics and vision into the AI era.
+                  Three systems, one idea: give AI structure, not pixels.
                 </h2>
               </div>
             </div>
@@ -330,6 +336,63 @@ export default function LabHome() {
                   </a>
                 )
               })}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative border-t border-white/10" id="thesis">
+          <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">
+                  The thesis · since 2020
+                </p>
+                <h2 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight tracking-normal text-white sm:text-5xl">
+                  Structure from chaos.
+                </h2>
+                <div className="mt-7 max-w-2xl space-y-5 text-lg leading-8 text-slate-300">
+                  <p>
+                    Your visual cortex takes a chaotic flood of light — millions of noisy signals a second —
+                    and quietly turns it into a world you can reason about, recognizing the patterns hidden
+                    in the noise: edges, objects, symbols, meaning. Vision Cortex set out in 2020 to build
+                    that same faculty for machines. The
+                    founding bet was narrow and specific: man-made graphics — symbols, screens, diagrams,
+                    type — carry structure someone put there on purpose, and a vision system&apos;s job is to
+                    recover it. Recognition, as we put it then, is information reduction: move up from pixels
+                    to shapes to meaning, and discard everything that is not the idea. We proved it on hard
+                    cases — optical character recognition, symbol extraction from noisy backgrounds, the
+                    geometry of engineering drawings — and called it semantic computer vision.
+                  </p>
+                  <p>
+                    Years later, that principle describes exactly what modern AI is missing. Models are
+                    extraordinary reasoners handed the wrong representation. The visual world reaches them as
+                    pixels — a flat grid of color that means nothing until something rebuilds the button, the
+                    glyph, the curve inside it. Every screenshot parsed and every image traced is a model
+                    reconstructing structure that was thrown away the moment it was rendered: slow, lossy,
+                    and unreliable.
+                  </p>
+                  <p>
+                    So we do the reduction for it. Vectors, element trees, symbolic scenes — the abstract
+                    representation beneath the pixels, the layer graphics were built from in the first place.
+                    Give a machine that, and it can reason precisely, edit losslessly, and act without
+                    guessing. One faculty, wherever machines meet the visual world: structure, derived from
+                    chaos.
+                  </p>
+                </div>
+              </div>
+
+              <aside className="lg:pt-14">
+                <figure className="rounded-lg border border-white/10 bg-white/[0.04] p-6 shadow-glow backdrop-blur">
+                  <span className="block font-serif text-6xl leading-none text-cortex-gold" aria-hidden="true">&ldquo;</span>
+                  <blockquote className="-mt-3 text-xl leading-8 text-slate-100">
+                    Is a symbol a fundamental concept that exists outside human experience — or an artifact
+                    that only makes sense to the human brain, specifically, the visual cortex?
+                  </blockquote>
+                  <figcaption className="mt-6 border-t border-white/10 pt-4 text-sm text-slate-400">
+                    The question Vision Cortex was named for.
+                  </figcaption>
+                </figure>
+              </aside>
             </div>
           </div>
         </section>
